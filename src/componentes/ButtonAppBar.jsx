@@ -73,6 +73,12 @@ export default function ButtonAppBar() {
             <ListItem button component={Link} to="/criar-admin">
               <ListItemText primary="Nova Conta de Admin" />
             </ListItem>
+            <ListItem button component={Link} to="/criar-req">
+              <ListItemText primary="Criar Requisição" />
+            </ListItem>
+            <ListItem button component={Link} to="/alterar-req">
+              <ListItemText primary="Alterar Requisição" />
+            </ListItem>
             <ListItem button component={Link} to="/cadastro-fornecedor">
               <ListItemText primary="Cadastro de Fornecedores" />
             </ListItem>
