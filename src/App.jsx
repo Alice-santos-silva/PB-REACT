@@ -76,7 +76,7 @@ export default function App() {
               <Route path="consulta-dolar" element={<CotacaoMoeda />} />
               <Route path="*" element={<AcessoNegado />} />
             </Route>
-          )}
+          )} 
 
           {userRole === null && (
             <Route path="*" element={<Navigate to="/" />} />
