@@ -8,7 +8,8 @@ const AlterarReq = ({ requisicoes, atualizarStatus }) => {
   return (
     <div className="container03">
       <h1>Alterar Requisição de Compra</h1>
-      <ul>
+      <div className='forms'>
+      <ul className='list'>
         {requisicoes
           .sort((a, b) => new Date(a.data) - new Date(b.data))
           .map((req) => (
@@ -23,6 +24,8 @@ const AlterarReq = ({ requisicoes, atualizarStatus }) => {
             </li>
           ))}
       </ul>
+      </div>
+     
     </div>
   );
 };

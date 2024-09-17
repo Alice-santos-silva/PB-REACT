@@ -24,7 +24,7 @@ const CriarReq = ({ addRequisicao, requisicoes }) => {
   return (
     <div className="container03">
       <h1>Criar Requisição de Compra</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='forms'>
         <input
           type="text"
           value={produto}
