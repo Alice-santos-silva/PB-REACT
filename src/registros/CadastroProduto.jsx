@@ -6,12 +6,11 @@ const CadastroProduto = ({ addProduto }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const novoProduto = { nome, descricao };
+    const novoProduto = { id: Date.now(), nome, descricao }; 
     addProduto(novoProduto);
     setNome('');
     setDescricao('');
-    alert('Produto cadastrado com sucesso!')
-    
+    alert('Produto cadastrado com sucesso!');
   };
 
   return (

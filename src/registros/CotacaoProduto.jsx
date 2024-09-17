@@ -30,7 +30,7 @@ const CotacaoProduto = ({ produtos, cotacoes }) => {
 
       {produtoId && (
         <div>
-          <h2>Cotações para o produto: {produtos.find(p => p.id === produtoId)?.nome}</h2>
+          <h2>Cotações para o produto: {produtos.find(p => p.id === Number(produtoId))?.nome}</h2>
           {cotacoesFiltradas.length > 0 ? (
             <ul>
               {cotacoesFiltradas.map((cotacao, index) => (

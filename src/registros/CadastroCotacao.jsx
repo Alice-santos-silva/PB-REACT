@@ -12,7 +12,7 @@ const CadastroCotacao = ({ produtos, addCotacao }) => {
     setProdutoId('');
     setData('');
     setPreco('');
-    alert('Cotação cadastrada com sucesso!')
+    alert('Cotação cadastrada com sucesso!');
   };
 
   return (
@@ -27,8 +27,8 @@ const CadastroCotacao = ({ produtos, addCotacao }) => {
           <option value="" disabled>
             Selecione um Produto
           </option>
-          {produtos.map((produto, index) => (
-            <option key={index} value={index}>
+          {produtos.map((produto) => (
+            <option key={produto.id} value={produto.id}>
               {produto.nome}
             </option>
           ))}
