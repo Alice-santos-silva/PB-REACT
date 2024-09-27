@@ -72,7 +72,6 @@ export default function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="criar-req" element={<CriarReq addRequisicao={addRequisicao} requisicoes={requisicoes} />} />
-              <Route path="cadastro-contato" element={<CadastroContato />} />
               <Route path="consulta-dolar" element={<CotacaoMoeda />} />
               <Route path="*" element={<AcessoNegado />} />
             </Route>
