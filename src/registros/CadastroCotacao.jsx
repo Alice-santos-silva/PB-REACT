@@ -7,7 +7,23 @@ const CadastroCotacao = ({ produtos, addCotacao }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const novaCotacao = { produtoId, data, preco };
+
+    
+    const precoNumerico = parseFloat(preco);
+
+    if (isNaN(precoNumerico)) {
+      alert('Por favor, insira um valor válido para o preço.');
+      return;
+    }
+
+    const novaCotacao = { 
+      produtoId, 
+      data, 
+      preco: precoNumerico 
+    };
+
+    console.log('Cotação a ser cadastrada:', novaCotacao);
+
     addCotacao(novaCotacao);
     setProdutoId('');
     setData('');
@@ -25,7 +41,7 @@ const CadastroCotacao = ({ produtos, addCotacao }) => {
           required
           className='select'
         >
-          <option value="" disabled >
+          <option value="" disabled>
             Selecione um Produto
           </option>
           {produtos.map((produto) => (
