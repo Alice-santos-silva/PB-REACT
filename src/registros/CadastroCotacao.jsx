@@ -23,12 +23,13 @@ const CadastroCotacao = ({ produtos, addCotacao }) => {
           value={produtoId}
           onChange={(e) => setProdutoId(e.target.value)}
           required
+          className='select'
         >
-          <option value="" disabled>
+          <option value="" disabled >
             Selecione um Produto
           </option>
           {produtos.map((produto) => (
-            <option key={produto.id} value={produto.id}>
+            <option key={produto.id} value={produto.id} className='select'>
               {produto.nome}
             </option>
           ))}

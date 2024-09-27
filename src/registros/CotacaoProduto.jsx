@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DataTable from 'react-data-table-component';
 
 const CotacaoProduto = ({ produtos, cotacoes }) => {
   const [produtoId, setProdutoId] = useState('');
@@ -8,6 +9,19 @@ const CotacaoProduto = ({ produtos, cotacoes }) => {
   };
 
   const cotacoesFiltradas = cotacoes.filter(cotacao => cotacao.produtoId === produtoId);
+
+  const columns = [
+    {
+      name: 'Data',
+      selector: row => new Date(row.data).toLocaleDateString(),
+      sortable: true,
+    },
+    {
+      name: 'Preço',
+      selector: row => (typeof row.preco === 'number' ? `R$ ${row.preco.toFixed(2)}` : 'Preço indisponível'),
+      sortable: true,
+    }
+  ];
 
   return (
     <div className="container03">
@@ -32,13 +46,15 @@ const CotacaoProduto = ({ produtos, cotacoes }) => {
         <div>
           <h2>Cotações para o produto: {produtos.find(p => p.id === Number(produtoId))?.nome}</h2>
           {cotacoesFiltradas.length > 0 ? (
-            <ul>
-              {cotacoesFiltradas.map((cotacao, index) => (
-                <li key={index}>
-                  Data: {cotacao.data}, Preço: {cotacao.preco}
-                </li>
-              ))}
-            </ul>
+            <div className="custom-table">
+              <DataTable
+                columns={columns}
+                data={cotacoesFiltradas}
+                pagination
+                highlightOnHover
+                striped
+              />
+            </div>
           ) : (
             <p>Nenhuma cotação encontrada para este produto.</p>
           )}

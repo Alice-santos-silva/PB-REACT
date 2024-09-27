@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import DataTable from 'react-data-table-component';
 
 const CriarReq = ({ addRequisicao, requisicoes }) => {
   const [produto, setProduto] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [data, setData] = useState('');
-  const [mostrarRequisicoes, setMostrarRequisicoes] = useState(false); 
+  const [mostrarRequisicoes, setMostrarRequisicoes] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!produto || !quantidade || !data) {
       alert('Por favor, preencha todos os campos.');
       return;
@@ -29,13 +30,33 @@ const CriarReq = ({ addRequisicao, requisicoes }) => {
   };
 
   const toggleRequisicoes = () => {
-    setMostrarRequisicoes(!mostrarRequisicoes); 
+    setMostrarRequisicoes(!mostrarRequisicoes);
+  };
+
+  const columns = [
+    { name: 'Produto', selector: row => row.produto, sortable: true },
+    { name: 'Quantidade', selector: row => row.quantidade, sortable: true },
+    { name: 'Data', selector: row => new Date(row.data).toLocaleDateString(), sortable: true },
+    { name: 'Status', selector: row => row.status, sortable: true },
+  ];
+
+  const customStyles = {
+    rows: {
+      style: {
+        color: 'black', 
+      },
+    },
+    header: {
+      style: {
+        color: 'black', 
+      },
+    },
   };
 
   return (
-    <div className="container02">
+    <div className="container03">
       <h1>Criar Requisição de Compra</h1>
-      <form onSubmit={handleSubmit} className='forms'>
+      <form onSubmit={handleSubmit} className="forms">
         <div>
           <label>Produto:</label>
           <input
@@ -66,23 +87,24 @@ const CriarReq = ({ addRequisicao, requisicoes }) => {
           />
         </div>
         <button type="submit">Criar Requisição</button>
-        <button onClick={toggleRequisicoes}>
-        {mostrarRequisicoes ? 'Ocultar Requisições' : 'Listar Requisições'}
-      </button>
+        <button type="button" onClick={toggleRequisicoes}>
+          {mostrarRequisicoes ? 'Ocultar Requisições' : 'Listar Requisições'}
+        </button>
       </form>
-
-     
 
       {mostrarRequisicoes && (
         <div>
           <h2>Lista de Requisições</h2>
-          <ul>
-            {requisicoes.map((req) => (
-              <li key={req.id}>
-                {req.produto} - {req.quantidade} unidades - {new Date(req.data).toLocaleDateString()} - Status: {req.status}
-              </li>
-            ))}
-          </ul>
+          <div className="custom-table">
+            <DataTable
+              columns={columns}
+              data={requisicoes}
+              customStyles={customStyles}  
+              pagination
+              highlightOnHover
+              striped
+            />
+          </div>
         </div>
       )}
     </div>

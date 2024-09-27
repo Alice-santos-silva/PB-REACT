@@ -16,12 +16,12 @@ const AlterarReq = ({ requisicoes, atualizarStatus }) => {
               <li key={req.id}>
                 Produto: {req.produto}, Quantidade: {req.quantidade}, Estado: {req.status}, Data: {new Date(req.data).toLocaleDateString()}
                 {req.status === 'aberta' && (
-                  <button onClick={() => handleStatusChange(req.id, 'em cotação')}>
+                  <button onClick={() => handleStatusChange(req.id, 'em cotação')} className='botao'>
                     Marcar como Em Cotação
                   </button>
                 )}
                 {req.status === 'em cotação' && (
-                  <button onClick={() => handleStatusChange(req.id, 'cotada')}>
+                  <button onClick={() => handleStatusChange(req.id, 'cotada')} className='botao'>
                     Marcar como Cotada
                   </button>
                 )}

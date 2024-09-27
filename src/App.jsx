@@ -60,7 +60,7 @@ export default function App() {
               <Route path="alterar-req" element={<AlterarReq requisicoes={requisicoes} atualizarStatus={atualizarStatus} />} />
               <Route path="cadastro-fornecedor" element={<CadastroFornecedor />} />
               <Route path="cadastro-contato" element={<CadastroContato />} />
-              <Route path="cadastro-produto" element={<CadastroProduto addProduto={addProduto} />} />
+              <Route path="cadastro-produto" element={<CadastroProduto addProduto={addProduto} requisicoes={requisicoes} />} />
               <Route path="cadastro-cotacao" element={<CadastroCotacao produtos={produtos} addCotacao={addCotacao} />} />
               <Route path="consulta-cotacoes" element={<CotacaoProduto produtos={produtos} cotacoes={cotacoes} />} />
               <Route path="consulta-dolar" element={<CotacaoMoeda />} />
