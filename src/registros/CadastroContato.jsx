@@ -51,7 +51,7 @@ const CadastroContato = () => {
         </button>
 
         {showContatos && (
-          <div>
+          <div className='listaContatos'>
             <h2>Lista de Contatos</h2>
             <ul>
               {contatos.map((contato, index) => (
