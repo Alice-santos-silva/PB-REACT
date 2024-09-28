@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
+import { CSVLink } from 'react-csv';
 
 const CriarReq = ({ addRequisicao, requisicoes }) => {
   const [produto, setProduto] = useState('');
@@ -53,6 +54,13 @@ const CriarReq = ({ addRequisicao, requisicoes }) => {
     },
   };
 
+  const exportCSVHeaders = [
+    { label: 'Produto', key: 'produto' },
+    { label: 'Quantidade', key: 'quantidade' },
+    { label: 'Data', key: 'data' },
+    { label: 'Status', key: 'status' },
+  ];
+
   return (
     <div className="container03">
       <h1>Criar Requisição de Compra</h1>
@@ -105,6 +113,15 @@ const CriarReq = ({ addRequisicao, requisicoes }) => {
               striped
             />
           </div>
+
+          <CSVLink
+            data={requisicoes}
+            headers={exportCSVHeaders}
+            filename={"requisicoes.csv"}
+            className="btn btn-primary mt-3"
+          >
+            Exportar CSV
+          </CSVLink>
         </div>
       )}
     </div>
